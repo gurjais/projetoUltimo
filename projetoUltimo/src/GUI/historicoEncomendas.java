@@ -6,6 +6,7 @@
 package GUI;
 
 import DAL.Gestao;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
