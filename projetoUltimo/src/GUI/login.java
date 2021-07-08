@@ -175,8 +175,8 @@ public class login extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        String login = this.jTextPane1.getText();
-        String pass = this.jTextPane2.getText();
+        String login = this.jTextPane3.getText();
+        String pass = this.jTextPane4.getText();
 
         factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
         EntityManager em = factory.createEntityManager();
