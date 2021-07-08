@@ -15,7 +15,7 @@ public class historicoEncomendas extends javax.swing.JPanel {
 
     private Gestao gestor = new Gestao();
     private login janelaPrincipal;
-    private static final String Persistence_UNIT_NAME = "projetoFinal2PU";
+    private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private static EntityManagerFactory factory;
     
     

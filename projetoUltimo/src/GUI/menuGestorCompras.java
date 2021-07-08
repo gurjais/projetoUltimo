@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import DAL.Gestao;
+
 /**
  *
  * @author ASUS
@@ -14,7 +16,8 @@ public class menuGestorCompras extends javax.swing.JPanel {
     private login janelaPrincipal;
     private Gestao gestor = new Gestao();
     
-    public menuGestorCompras() {
+    
+    public menuGestorCompras(login parent,Gestao recebido) {
         initComponents();
         janelaPrincipal=parent;
         gestor=recebido;

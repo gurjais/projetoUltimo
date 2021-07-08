@@ -2,19 +2,25 @@ package GUI;
 
 import DAL.Codpostais;
 import DAL.Gestao;
-import javax.management.Query;
+import DAL.Cliente;
+import DAL.Codpostais;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+
 
 
 public class criarConta1 extends javax.swing.JPanel {
 
     private login janelaPrincipal;
-    private static final String Persistence_UNIT_NAME = "projetoFinal2PU";
+    private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private static EntityManagerFactory factory;
     
     
     public criarConta1(login parent) {
         initComponents();
-
         janelaPrincipal = parent;
     }
 

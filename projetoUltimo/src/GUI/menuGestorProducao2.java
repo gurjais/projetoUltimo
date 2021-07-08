@@ -14,7 +14,7 @@ import DAL.Gestao;
  */
 public class menuGestorProducao2 extends javax.swing.JPanel {
 
-private static final String Persistence_UNIT_NAME = "projetoFinal2PU";
+private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private static EntityManagerFactory factory;
     private login janelaPrincipal;
     private Gestao gestor = new Gestao();

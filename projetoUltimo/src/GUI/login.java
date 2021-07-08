@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  */
 public class login extends javax.swing.JFrame {
 
-    private static final String Persistence_UNIT_NAME = "projetoFinal2PU";
+    private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private static EntityManagerFactory factory;
     private int cod;
     
