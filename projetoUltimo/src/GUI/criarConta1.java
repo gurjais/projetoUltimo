@@ -1,5 +1,9 @@
 package GUI;
 
+import DAL.Codpostais;
+import DAL.Gestao;
+import javax.management.Query;
+
 
 public class criarConta1 extends javax.swing.JPanel {
 
@@ -8,7 +12,7 @@ public class criarConta1 extends javax.swing.JPanel {
     private static EntityManagerFactory factory;
     
     
-    public criarConta1() {
+    public criarConta1(login parent) {
         initComponents();
         janelaPrincipal = parent;
     }
