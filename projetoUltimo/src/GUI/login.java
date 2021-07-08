@@ -28,11 +28,10 @@ public class login extends javax.swing.JFrame {
     
     public login() {
         initComponents();
-        setResizable(false);
-        setSize(400, 300);
+        setResizable(true);
+        setSize(1071, 750);
         this.setLocationRelativeTo(null);
         this.painelVisivel = this.jPanel1;
-        
     }
     
     

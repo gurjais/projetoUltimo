@@ -7,6 +7,7 @@ package GUI;
 
 import DAL.Gestao;
 import DAL.ProdutoFinal;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
@@ -27,16 +28,12 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         janelaPrincipal = parent;
         this.gestor = gestor;
         atualizarConteudo(false);
-        this.jLabel1.setText("Bem Vindo, "+gestor.getNome());
+       
     }
 
     
     public void atualizarConteudo(boolean estado){
-        this.jTextPane2.setVisible(estado);
-        this.jLabel2.setVisible(estado);
-         this.jLabel3.setVisible(estado);
-          this.jLabel4.setVisible(estado);
-          this.jButton2.setVisible(estado);
+       
     }
     /**
      * This method is called from within the constructor to initialize the form.
