@@ -16,6 +16,7 @@ public class mensagemAviso extends javax.swing.JFrame {
      */
     public mensagemAviso() {
         initComponents();
+        
     }
 
     /**

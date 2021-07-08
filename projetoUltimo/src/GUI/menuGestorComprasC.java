@@ -29,6 +29,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         this.janelaPrincipal=parent;
         this.gestor=gestor;
         atualizarConteudo(false);
+        janelaPrincipal.setSize(600,500);
     }
     
     
@@ -98,7 +99,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 399, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -120,7 +121,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jButton2))
                                 .addComponent(jLabel2))))
-                    .addContainerGap(11, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

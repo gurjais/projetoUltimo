@@ -30,6 +30,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         initComponents();
         janelaPrincipal = parent;
         this.gestor = gestor;
+        janelaPrincipal.setSize(700,700);
     }
     
     

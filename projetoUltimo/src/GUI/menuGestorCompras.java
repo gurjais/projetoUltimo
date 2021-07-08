@@ -21,6 +21,7 @@ public class menuGestorCompras extends javax.swing.JPanel {
         initComponents();
         janelaPrincipal=parent;
         gestor=recebido;
+        janelaPrincipal.setSize(600,550);
     }
 
     /**

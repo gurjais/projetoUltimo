@@ -21,6 +21,7 @@ public class menuGestorProducao extends javax.swing.JPanel {
         initComponents();
         this.janelaPrincipal=parent;
         this.gestor=gestor;
+        janelaPrincipal.setSize(600,600);
     }
 
     /**

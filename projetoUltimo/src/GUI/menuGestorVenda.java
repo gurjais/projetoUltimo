@@ -28,6 +28,7 @@ public class menuGestorVenda extends javax.swing.JPanel {
         initComponents();
         janelaPrincipal = parent;
         this.gestor=gestor;
+        janelaPrincipal.setSize(600,300);
         if(gestor.getIdDepartamento()==2){
             this.jButton4.setVisible(false);
         }

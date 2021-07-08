@@ -23,6 +23,7 @@ public class infoMateriaPrima extends javax.swing.JPanel {
         janelaPrincipal=parent;
         adicionarLista();
         this.gestor = gestor;
+        janelaPrincipal.setSize(900,400);
     }
     
     

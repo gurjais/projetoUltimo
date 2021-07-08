@@ -28,6 +28,7 @@ public class menuGestorArmazem extends javax.swing.JPanel {
         janelaPrincipal = parent;
         procura = recebida;
         this.gestor=gestor;
+        janelaPrincipal.setSize(700,500);
         
         this.jTextPane1.setText(procura.getIdFuncionario().getIdFuncionario().toString());
         this.jTextPane2.setText(procura.getCodCliente().getCodCliente().toString());

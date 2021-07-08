@@ -34,6 +34,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         janelaPrincipal=parent;
         gestor = recebido;
         listarProdutos();
+        janelaPrincipal.setSize(700,500);
     }
     
     

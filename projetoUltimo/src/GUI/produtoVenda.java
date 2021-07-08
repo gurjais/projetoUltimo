@@ -33,6 +33,7 @@ public class produtoVenda extends javax.swing.JPanel {
         initComponents();
         janelaPrincipal = parent;
         procura = recebida;
+        janelaPrincipal.setSize(800,300);
         this.gestor=gestor;
         
         DefaultTableModel model;

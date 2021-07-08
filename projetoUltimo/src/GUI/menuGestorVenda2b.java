@@ -31,6 +31,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         initComponents();
         janelaPrincipal = parent;
         procura = recebida;
+        janelaPrincipal.setSize(600,550);
         this.gestor=gestor;
         this.jTextPane1.setText(procura.getIdFuncionario().getIdFuncionario().toString());
         this.jTextPane2.setText(procura.getCodCliente().getCodCliente().toString());

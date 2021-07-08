@@ -30,6 +30,7 @@ public class historicoEncomendas extends javax.swing.JPanel {
         janelaPrincipal=parent;
         gestor = recebida;
         adicionarLista();
+        janelaPrincipal.setSize(900,400);
     }
     
     
@@ -104,7 +105,7 @@ public class historicoEncomendas extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jButton1)
-                .addContainerGap(650, Short.MAX_VALUE))
+                .addContainerGap(719, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -114,7 +115,7 @@ public class historicoEncomendas extends javax.swing.JPanel {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(259, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(19, 19, 19))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
