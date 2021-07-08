@@ -5,9 +5,14 @@
  */
 package GUI;
 
+import DAL.Encomenda;
 import DAL.Gestao;
+import DAL.ProdutoInicial;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ASUS
@@ -20,7 +25,7 @@ public class historicoEncomendas extends javax.swing.JPanel {
     private static EntityManagerFactory factory;
     
     
-    public historicoEncomendas() {
+    public historicoEncomendas(login parent,Gestao recebida) {
         initComponents();
         janelaPrincipal=parent;
         gestor = recebida;

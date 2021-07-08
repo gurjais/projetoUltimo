@@ -5,8 +5,17 @@
  */
 package GUI;
 
+import DAL.Cliente;
 import DAL.Gestao;
+import DAL.ProdVenda;
+import DAL.ProdVendaPK;
 import DAL.ProdutoFinal;
+import DAL.Venda;
+import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -242,6 +251,42 @@ public class menuGestorVenda2 extends javax.swing.JPanel {
         this.janelaPrincipal.trocaPainel(new menuGestorVenda(this.janelaPrincipal,gestor));
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public ProdutoFinal procurarProduto(String nomeProduto){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        int codigo=0;
+        
+        Query q = em.createNamedQuery("ProdutoFinal.findByNomeProduto");
+        q.setParameter("nomeProduto", nomeProduto);
+        Object obj = q.getSingleResult();
+        
+        if(obj != null){
+    
+            return ((ProdutoFinal)obj);
+             
+        }
+        
+         return null;
+    }
+    
+    
+    public Cliente procurarCliente(){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+        Cliente novo = new Cliente();
+        Query q = em.createNamedQuery("Cliente.findByCodCliente");
+        q.setParameter("codCliente",Integer.parseInt(this.jTextPane2.getText()));
+        
+            Object obj = null;
+        try{
+             obj = q.getSingleResult();
+        }catch(Exception ex){
+            
+        }
+        if(obj!=null)return ((Cliente)obj);
+        return null;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

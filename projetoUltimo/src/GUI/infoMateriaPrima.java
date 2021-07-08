@@ -1,7 +1,13 @@
 package GUI;
 
+import DAL.Cliente;
 import DAL.Gestao;
+import DAL.ProdVenda;
 import DAL.ProdutoInicial;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -12,7 +18,7 @@ public class infoMateriaPrima extends javax.swing.JPanel {
     private login janelaPrincipal;
     private Gestao gestor = new Gestao();
     
-    public infoMateriaPrima() {
+    public infoMateriaPrima(login parent,Gestao gestor) {
         initComponents();
         janelaPrincipal=parent;
         adicionarLista();

@@ -5,11 +5,17 @@
  */
 package GUI;
 
+import DAL.Cliente;
 import DAL.Gestao;
 import DAL.Maquina;
+import DAL.ProdutoFinal;
 import DAL.Revisao;
 import java.util.Calendar;
 import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *

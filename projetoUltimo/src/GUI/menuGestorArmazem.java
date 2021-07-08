@@ -23,7 +23,7 @@ public class menuGestorArmazem extends javax.swing.JPanel {
     private Gestao gestor = new Gestao();
     
     
-    public menuGestorArmazem() {
+    public menuGestorArmazem(login parent,Venda recebida,Gestao gestor) {
         initComponents();
         janelaPrincipal = parent;
         procura = recebida;

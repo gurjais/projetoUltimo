@@ -7,6 +7,10 @@ package GUI;
 
 import DAL.Gestao;
 import DAL.ProdutoInicial;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -20,7 +24,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private Gestao gestor = new Gestao();
     private ProdutoInicial produto = new ProdutoInicial();
    
-    public menuGestorComprasC() {
+    public menuGestorComprasC(login parent,Gestao gestor) {
         initComponents();
         this.janelaPrincipal=parent;
         this.gestor=gestor;

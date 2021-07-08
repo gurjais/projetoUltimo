@@ -5,9 +5,15 @@
  */
 package GUI;
 
+import DAL.Cliente;
 import DAL.Gestao;
 import DAL.ProdVenda;
 import DAL.Venda;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.table.DefaultTableModel;
 
 /**

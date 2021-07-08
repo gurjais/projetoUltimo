@@ -5,9 +5,17 @@
  */
 package GUI;
 
+import DAL.Encomenda;
 import DAL.Fornecedor;
 import DAL.Gestao;
+import DAL.ProdEncomenda;
+import DAL.ProdEncomendaPK;
 import DAL.ProdutoInicial;
+import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
