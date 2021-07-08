@@ -22,6 +22,7 @@ public class criarConta1 extends javax.swing.JPanel {
     public criarConta1(login parent) {
         initComponents();
         janelaPrincipal = parent;
+        janelaPrincipal.setSize(500, 500);
     }
 
     /**
