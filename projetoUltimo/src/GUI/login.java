@@ -5,6 +5,9 @@
  */
 package GUI;
 
+import DAL.Gestao;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ASUS
@@ -15,6 +18,7 @@ public class login extends javax.swing.JFrame {
     private static EntityManagerFactory factory;
     private int cod;
     
+    private JPanel painelVisivel;
     
     public login() {
         initComponents();
@@ -22,6 +26,47 @@ public class login extends javax.swing.JFrame {
         setSize(1071, 750);
         this.setLocationRelativeTo(null);
         this.painelVisivel = this.jPanel1;
+    }
+    
+    
+     public void trocaPainel(JPanel painel) {
+        this.painelVisivel.setVisible(false);
+        this.painelVisivel = painel;
+        this.setContentPane(this.painelVisivel);
+        this.painelVisivel.setVisible(true);
+    }
+    
+    public JPanel voltarLogin(){
+        
+        return this.jPanel1;
+    }
+    
+    public boolean login(int cod,String pass){
+        
+
+         factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+         
+        
+        Query q = em.createNamedQuery("Gestao.findByIdFuncionario");
+        q.setParameter("idFuncionario",cod);
+        
+        for (Object d : q.getResultList()) {
+            if ((((Gestao) d).getIdFuncionario()==cod && ((Gestao) d).getPasswordd().equals(pass))) {
+               
+                System.out.println(((Gestao) d).getIdDepartamento());
+                if( ((Gestao) d).getIdDepartamento()==1|| ((Gestao) d).getIdDepartamento() == 2)this.trocaPainel(new menuGestorVenda(this,(Gestao)d));
+                if(((Gestao) d).getIdDepartamento() ==3)this.trocaPainel(new menuGestorCompras(this,(Gestao)d));
+                if(((Gestao) d).getIdDepartamento() ==4)this.trocaPainel(new menuGestorProducao(this,(Gestao)d));
+                if(((Gestao) d).getIdDepartamento() ==5)this.trocaPainel(new menuGestorMaquinasA(this,(Gestao)d));
+                
+                return true;
+            }
+           
+        } 
+        
+        return false;
     }
 
     /**
