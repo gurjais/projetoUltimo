@@ -36,7 +36,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         janelaPrincipal = parent;
         this.gestor = gestor;
         this.jLabel2.setText("Bem Vindo, "+gestor.getNome());
-        janelaPrincipal.setSize(600,600);
+        
     }
     
     
@@ -147,6 +147,11 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         jLabel7.setText("RegistarRevisao");
 
         jButton4.setText("Criar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Utima avaliaçao");
 
@@ -237,16 +242,16 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(81, 81, 81)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(146, 146, 146)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,7 +260,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.janelaPrincipal.trocaPainel(new menuGestorMaquinasB(this.janelaPrincipal,this.gestor,this.maquina));
+        this.janelaPrincipal.trocaPainel(new menuGestorMaquinasC(this.janelaPrincipal,this.gestor,this.maquina));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -284,6 +289,10 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.janelaPrincipal.trocaPainel(this.janelaPrincipal.voltarLogin());
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

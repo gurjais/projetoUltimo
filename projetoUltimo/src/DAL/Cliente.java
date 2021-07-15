@@ -31,7 +31,8 @@ import javax.persistence.Table;
     @NamedQuery(name = "Cliente.findByTelefone", query = "SELECT c FROM Cliente c WHERE c.telefone = :telefone"),
     @NamedQuery(name = "Cliente.findByEmail", query = "SELECT c FROM Cliente c WHERE c.email = :email"),
     @NamedQuery(name = "Cliente.findByRua", query = "SELECT c FROM Cliente c WHERE c.rua = :rua"),
-    @NamedQuery(name = "Cliente.findByPorta", query = "SELECT c FROM Cliente c WHERE c.porta = :porta")})
+    @NamedQuery(name = "Cliente.findByPorta", query = "SELECT c FROM Cliente c WHERE c.porta = :porta"),
+    @NamedQuery(name = "Cliente.findByPass", query = "SELECT c FROM Cliente c WHERE c.pass = :pass")})
 public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,6 +50,9 @@ public class Cliente implements Serializable {
     private String rua;
     @Column(name = "PORTA")
     private Integer porta;
+    @Basic(optional = false)
+    @Column(name = "PASS")
+    private String pass;
     @OneToMany(mappedBy = "codCliente")
     private Collection<Venda> vendaCollection;
     @JoinColumn(name = "CODPOSTAL", referencedColumnName = "CODPOSTAL")
@@ -60,6 +64,11 @@ public class Cliente implements Serializable {
 
     public Cliente(Integer codCliente) {
         this.codCliente = codCliente;
+    }
+
+    public Cliente(Integer codCliente, String pass) {
+        this.codCliente = codCliente;
+        this.pass = pass;
     }
 
     public Integer getCodCliente() {
@@ -108,6 +117,14 @@ public class Cliente implements Serializable {
 
     public void setPorta(Integer porta) {
         this.porta = porta;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public Collection<Venda> getVendaCollection() {
