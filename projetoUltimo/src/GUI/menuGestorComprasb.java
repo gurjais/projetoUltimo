@@ -138,7 +138,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         jLabel3.setText("Id da encomenda");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Id do cliente");
+        jLabel4.setText("Cliente");
 
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
