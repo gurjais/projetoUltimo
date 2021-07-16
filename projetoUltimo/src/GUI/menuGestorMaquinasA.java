@@ -43,8 +43,8 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
      public void atualizarComponentes(boolean estado){
         this.jButton3.setVisible(estado);
         this.jLabel3.setVisible(estado);
-        this.jLabel4.setVisible(estado);
-        this.jLabel5.setVisible(estado);
+        this.jLabel10.setVisible(estado);
+        this.jLabel9.setVisible(estado);
         this.jLabel6.setVisible(estado);
         this.jLabel7.setVisible(estado);
         this.jLabel8.setVisible(estado);
@@ -67,7 +67,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         q.setParameter("idMaquina",id);
         
        for (Object d : q.getResultList()) {
-            if ((((Revisao) d).getGestao()!= null)) {
+            if ((((Revisao) d).getIdFuncionario().getIdFuncionario()!= null)) {
                 
                 try{
                     System.out.println("entrou");
@@ -81,7 +81,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
             }
             
         }
-        if(maisRecente.getGestao()!=null)return maisRecente;
+        if(maisRecente.getIdFuncionario().getIdFuncionario()!=null)return maisRecente;
         
         return null;
     }
@@ -319,9 +319,9 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         if(obj != null){
             Revisao revisao = buscarRevisoes(((Maquina) obj).getIdMaquina());
             atualizarComponentes(true);
-            this.jLabel5.setText(((Maquina) obj).getDescricao());
-            this.jLabel4.setText(((Maquina) obj).getTipoMaquina());
-            this.jLabel3.setText(revisao.getGestao().getIdFuncionario().toString());
+            this.jLabel9.setText(((Maquina) obj).getDescricao());
+            this.jLabel10.setText(((Maquina) obj).getTipoMaquina());
+            this.jLabel3.setText(revisao.getIdFuncionario().getIdFuncionario().toString());
             this.jLabel6.setText(revisao.getData1().toString());
             this.jLabel7.setText(((Maquina) obj).getProximarevisao().toString());
             this.jLabel8.setText(revisao.getAvaliacaofinal());
@@ -331,7 +331,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.janelaPrincipal.trocaPainel(new menuGestorMaquinasB(this.janelaPrincipal,this.gestor,this.maquina));
+        this.janelaPrincipal.trocaPainel(new menuGestorMaquinasC(this.janelaPrincipal,this.gestor,this.maquina));
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
