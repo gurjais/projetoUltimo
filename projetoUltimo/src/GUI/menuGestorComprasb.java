@@ -36,25 +36,26 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         initComponents();
         janelaPrincipal=parent;
         gestor = recebido;
-        //listarProdutos();
+        listarProdutos();
         janelaPrincipal.setSize(700,500);
        
     }
     
     
-    /* private void listarProdutos(){
+     private void listarProdutos(){
         factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
         EntityManager em = factory.createEntityManager();
-        
+        this.jComboBox2.removeAllItems();
         
         Query q = em.createNamedQuery("ProdutoInicial.findAll");
         for (Object d : q.getResultList()) {
             if ((((ProdutoInicial) d).getCodProduto() != null)) {
-                this.jTextArea1.append(((ProdutoInicial) d).getNomeProduto() + " - 0\n");
+                System.out.println("teste123");
+                this.jComboBox2.addItem(((ProdutoInicial) d).getNomeProduto()); 
             }
         }
     }
-    */
+    
     
     public ProdutoInicial procurarProduto(String nomeProduto){
         factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
@@ -132,14 +133,14 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
 
             },
             new String [] {
-                "Codigo", "Funcionario", "Fornecedor", "Data", "Total"
+                "Codigo", "Nome", "Preco/uni", "quantidade", "Total"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Float.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -178,7 +179,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
             }
         });
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("Escolha ou insira o nome do produto");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +224,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -240,7 +241,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton4)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 70, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +252,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
