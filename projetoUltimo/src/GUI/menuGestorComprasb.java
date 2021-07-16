@@ -37,7 +37,6 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         janelaPrincipal=parent;
         gestor = recebido;
         listarProdutos();
-        janelaPrincipal.setSize(700,500);
        
     }
     
@@ -50,7 +49,6 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         Query q = em.createNamedQuery("ProdutoInicial.findAll");
         for (Object d : q.getResultList()) {
             if ((((ProdutoInicial) d).getCodProduto() != null)) {
-                System.out.println("teste123");
                 this.jComboBox2.addItem(((ProdutoInicial) d).getNomeProduto()); 
             }
         }
@@ -156,6 +154,11 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
                 jTable1MouseClicked(evt);
             }
         });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Voltar");
@@ -236,12 +239,12 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton4)))
-                        .addGap(0, 70, Short.MAX_VALUE))))
+                        .addGap(0, 47, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +291,6 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        
-        
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -297,7 +299,27 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        String nome = this.jTextField1.getText();
+        ProdutoInicial novo = null;
+        boolean controlo = true;
+        novo = procurarProduto(nome);
+        
+        if(novo!=null){
+            DefaultTableModel model;
+        model = (DefaultTableModel) jTable1.getModel();
+            for(int i=0; i<model.getRowCount();i++){
+                if(nome.equals(model.getValueAt(i, 1))){
+                    controlo=false;
+                }
+            }
+            if(controlo==true){
+                model.addRow(new Object[]{novo.getCodProduto(),novo.getNomeProduto(),novo.getPreco(),0,0});
+            }else{
+                System.out.println("produto ja foi adicionado");
+            }
+        }else{
+            System.out.println("wtf");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -313,7 +335,10 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
+        
+        if(this.jComboBox2.getSelectedItem()!=null){
+            this.jTextField1.setText(this.jComboBox2.getSelectedItem().toString());
+        }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -323,6 +348,18 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     System.out.println(selectedObject);
                 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+         DefaultTableModel model;
+        model = (DefaultTableModel) jTable1.getModel();
+        if(evt.getKeyCode()==10){
+             for(int i=0; i<model.getRowCount();i++){
+          
+            model.setValueAt(Float.parseFloat(model.getValueAt(i, 2).toString())* Integer.parseInt(model.getValueAt(i, 3).toString()), i, 4);
+        }
+        }
+       
+    }//GEN-LAST:event_jTable1KeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
