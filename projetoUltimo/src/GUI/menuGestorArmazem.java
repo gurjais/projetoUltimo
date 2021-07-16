@@ -171,7 +171,7 @@ public class menuGestorArmazem extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 278, 170, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 580, 370));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 580, 370));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/oceano.jpeg"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 490));
