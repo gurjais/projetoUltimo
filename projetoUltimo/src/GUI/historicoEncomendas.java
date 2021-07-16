@@ -91,6 +91,16 @@ public class historicoEncomendas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Voltar");
@@ -148,6 +158,22 @@ public class historicoEncomendas extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.janelaPrincipal.trocaPainel(new menuGestorCompras(this.janelaPrincipal,gestor));
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        
+                    
+                
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+       if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+     evt.consume();
+     int selectedRowIndex = jTable1.getSelectedRow();
+                    int selectedColumnIndex = jTable1.getSelectedColumn();
+                    Object selectedObject = (Object) jTable1.getModel().getValueAt(selectedRowIndex, selectedColumnIndex);
+                    System.out.println(selectedObject);
+}
+    }//GEN-LAST:event_jTable1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -10,6 +10,8 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -38,6 +40,7 @@ public class Fornecedor implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "COD_FORNECEDOR")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer codFornecedor;
     @Column(name = "NOME")
     private String nome;

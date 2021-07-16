@@ -8,7 +8,6 @@ package GUI;
 import DAL.Gestao;
 import DAL.Maquina;
 import DAL.Revisao;
-import DAL.RevisaoPK;
 import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.EntityManager;
@@ -19,7 +18,7 @@ import javax.persistence.Persistence;
  *
  * @author ASUS
  */
-public class menuGestorMaquinasB extends javax.swing.JPanel {
+public class menuGestorMaquinasC extends javax.swing.JPanel {
 
 private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private static EntityManagerFactory factory;
@@ -28,7 +27,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private login janelaPrincipal;
     
     
-    public menuGestorMaquinasB(login parent,Gestao gestor, Maquina maquina) {
+    public menuGestorMaquinasC(login parent,Gestao gestor, Maquina maquina) {
         initComponents();
         
         this.jLabel4.setText(gestor.getIdFuncionario().toString());
@@ -36,7 +35,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         janelaPrincipal=parent;
         this.gestor=gestor;
         this.maquina=maquina;
-        janelaPrincipal.setSize(700,700);
+        
     }
 
     /**
@@ -168,16 +167,14 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
         EntityManager em = factory.createEntityManager();
-        RevisaoPK novaPK = new RevisaoPK();
-        novaPK.setIdFuncionario(gestor.getIdFuncionario());
-        novaPK.setIdMaquina(maquina.getIdMaquina());
+    
 
         Revisao nova = new Revisao();
-        nova.setGestao(this.gestor);
+        nova.setIdFuncionario(this.gestor);
         nova.setData1(new Date());
-        nova.setMaquina(maquina);
+        nova.setIdMaquina(maquina);
         nova.setAvaliacaofinal(this.jTextPane4.getText());
-        nova.setRevisaoPK(novaPK);
+        
 
         Calendar cal =Calendar.getInstance();
         cal.add(Calendar.MONTH,1);

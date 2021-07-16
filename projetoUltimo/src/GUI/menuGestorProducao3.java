@@ -5,9 +5,13 @@
  */
 package GUI;
 
+import DAL.Armazem;
+import DAL.Codpostais;
 import DAL.Gestao;
 import DAL.ProdutoFinal;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -200,7 +204,11 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
         EntityManager em = factory.createEntityManager();
         ProdutoFinal novo = new ProdutoFinal();
-        Armazem armazem = encontrarArmazem();
+        Armazem armazem = new Armazem();
+        Codpostais postal = new Codpostais();
+        postal.setCodpostal("1111-111");
+        armazem.setIdArmazem(1);
+        armazem.setCodpostal(postal);
 
         if(armazem.getCodpostal()!=null){
             novo.setCodProduto(Integer.parseInt(this.jTextPane1.getText()));

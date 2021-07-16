@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -41,6 +43,7 @@ public class Venda implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "COD_VENDA")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer codVenda;
     @Column(name = "DATA1")
     @Temporal(TemporalType.TIMESTAMP)

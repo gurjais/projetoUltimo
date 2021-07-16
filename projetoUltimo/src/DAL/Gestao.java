@@ -8,9 +8,10 @@ package DAL;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -39,6 +40,7 @@ public class Gestao implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID_FUNCIONARIO")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idFuncionario;
     @Column(name = "ID_DEPARTAMENTO")
     private Integer idDepartamento;
@@ -50,7 +52,7 @@ public class Gestao implements Serializable {
     private Integer porta;
     @Column(name = "PASSWORDD")
     private String passwordd;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "gestao")
+    @OneToMany(mappedBy = "idFuncionario")
     private Collection<Revisao> revisaoCollection;
     @OneToMany(mappedBy = "idFuncionario")
     private Collection<Venda> vendaCollection;
