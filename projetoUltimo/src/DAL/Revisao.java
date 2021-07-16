@@ -9,8 +9,10 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -27,15 +29,12 @@ import javax.persistence.TemporalType;
 @Table(name = "REVISAO")
 @NamedQueries({
     @NamedQuery(name = "Revisao.findAll", query = "SELECT r FROM Revisao r"),
-    @NamedQuery(name = "Revisao.findByIdFuncionario", query = "SELECT r FROM Revisao r WHERE r.revisaoPK.idFuncionario = :idFuncionario"),
-    @NamedQuery(name = "Revisao.findByIdMaquina", query = "SELECT r FROM Revisao r WHERE r.revisaoPK.idMaquina = :idMaquina"),
     @NamedQuery(name = "Revisao.findByData1", query = "SELECT r FROM Revisao r WHERE r.data1 = :data1"),
-    @NamedQuery(name = "Revisao.findByAvaliacaofinal", query = "SELECT r FROM Revisao r WHERE r.avaliacaofinal = :avaliacaofinal")})
+    @NamedQuery(name = "Revisao.findByAvaliacaofinal", query = "SELECT r FROM Revisao r WHERE r.avaliacaofinal = :avaliacaofinal"),
+    @NamedQuery(name = "Revisao.findByIdrevisao", query = "SELECT r FROM Revisao r WHERE r.idrevisao = :idrevisao")})
 public class Revisao implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected RevisaoPK revisaoPK;
     @Basic(optional = false)
     @Column(name = "DATA1")
     @Temporal(TemporalType.TIMESTAMP)
@@ -43,36 +42,29 @@ public class Revisao implements Serializable {
     @Basic(optional = false)
     @Column(name = "AVALIACAOFINAL")
     private String avaliacaofinal;
-    @JoinColumn(name = "ID_FUNCIONARIO", referencedColumnName = "ID_FUNCIONARIO", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Gestao gestao;
-    @JoinColumn(name = "ID_MAQUINA", referencedColumnName = "ID_MAQUINA", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Maquina maquina;
+    @Id
+    @Basic(optional = false)
+    @Column(name = "IDREVISAO")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer idrevisao;
+    @JoinColumn(name = "ID_FUNCIONARIO", referencedColumnName = "ID_FUNCIONARIO")
+    @ManyToOne
+    private Gestao idFuncionario;
+    @JoinColumn(name = "ID_MAQUINA", referencedColumnName = "ID_MAQUINA")
+    @ManyToOne
+    private Maquina idMaquina;
 
     public Revisao() {
     }
 
-    public Revisao(RevisaoPK revisaoPK) {
-        this.revisaoPK = revisaoPK;
+    public Revisao(Integer idrevisao) {
+        this.idrevisao = idrevisao;
     }
 
-    public Revisao(RevisaoPK revisaoPK, Date data1, String avaliacaofinal) {
-        this.revisaoPK = revisaoPK;
+    public Revisao(Integer idrevisao, Date data1, String avaliacaofinal) {
+        this.idrevisao = idrevisao;
         this.data1 = data1;
         this.avaliacaofinal = avaliacaofinal;
-    }
-
-    public Revisao(int idFuncionario, int idMaquina) {
-        this.revisaoPK = new RevisaoPK(idFuncionario, idMaquina);
-    }
-
-    public RevisaoPK getRevisaoPK() {
-        return revisaoPK;
-    }
-
-    public void setRevisaoPK(RevisaoPK revisaoPK) {
-        this.revisaoPK = revisaoPK;
     }
 
     public Date getData1() {
@@ -91,26 +83,34 @@ public class Revisao implements Serializable {
         this.avaliacaofinal = avaliacaofinal;
     }
 
-    public Gestao getGestao() {
-        return gestao;
+    public Integer getIdrevisao() {
+        return idrevisao;
     }
 
-    public void setGestao(Gestao gestao) {
-        this.gestao = gestao;
+    public void setIdrevisao(Integer idrevisao) {
+        this.idrevisao = idrevisao;
     }
 
-    public Maquina getMaquina() {
-        return maquina;
+    public Gestao getIdFuncionario() {
+        return idFuncionario;
     }
 
-    public void setMaquina(Maquina maquina) {
-        this.maquina = maquina;
+    public void setIdFuncionario(Gestao idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public Maquina getIdMaquina() {
+        return idMaquina;
+    }
+
+    public void setIdMaquina(Maquina idMaquina) {
+        this.idMaquina = idMaquina;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (revisaoPK != null ? revisaoPK.hashCode() : 0);
+        hash += (idrevisao != null ? idrevisao.hashCode() : 0);
         return hash;
     }
 
@@ -121,7 +121,7 @@ public class Revisao implements Serializable {
             return false;
         }
         Revisao other = (Revisao) object;
-        if ((this.revisaoPK == null && other.revisaoPK != null) || (this.revisaoPK != null && !this.revisaoPK.equals(other.revisaoPK))) {
+        if ((this.idrevisao == null && other.idrevisao != null) || (this.idrevisao != null && !this.idrevisao.equals(other.idrevisao))) {
             return false;
         }
         return true;
@@ -129,7 +129,7 @@ public class Revisao implements Serializable {
 
     @Override
     public String toString() {
-        return "DAL.Revisao[ revisaoPK=" + revisaoPK + " ]";
+        return "DAL.Revisao[ idrevisao=" + idrevisao + " ]";
     }
     
 }

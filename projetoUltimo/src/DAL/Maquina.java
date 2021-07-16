@@ -9,9 +9,10 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -38,6 +39,7 @@ public class Maquina implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "ID_MAQUINA")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idMaquina;
     @Column(name = "DESCRICAO")
     private String descricao;
@@ -46,7 +48,7 @@ public class Maquina implements Serializable {
     @Column(name = "PROXIMAREVISAO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date proximarevisao;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "maquina")
+    @OneToMany(mappedBy = "idMaquina")
     private Collection<Revisao> revisaoCollection;
 
     public Maquina() {
