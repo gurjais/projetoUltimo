@@ -36,7 +36,6 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         janelaPrincipal = parent;
         this.gestor = gestor;
         this.jLabel2.setText("Bem Vindo, "+gestor.getNome());
-        janelaPrincipal.setSize(600,600);
     }
     
     
