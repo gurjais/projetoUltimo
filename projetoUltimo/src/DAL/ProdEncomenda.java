@@ -9,10 +9,13 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Persistence;
 import javax.persistence.Table;
 
 /**
@@ -43,6 +46,9 @@ public class ProdEncomenda implements Serializable {
     @JoinColumn(name = "COD_PRODUTO", referencedColumnName = "COD_PRODUTO", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private ProdutoInicial produtoInicial;
+    
+     private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
+    private static EntityManagerFactory factory;
 
     public ProdEncomenda() {
     }
@@ -118,6 +124,15 @@ public class ProdEncomenda implements Serializable {
     @Override
     public String toString() {
         return "DAL.ProdEncomenda[ prodEncomendaPK=" + prodEncomendaPK + " ]";
+    }
+    
+    public void criarProdEncomenda(ProdEncomenda nova){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+        em.getTransaction().begin();
+        em.persist(nova);
+        em.getTransaction().commit();
     }
     
 }

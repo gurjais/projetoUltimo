@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -56,6 +60,9 @@ public class Encomenda implements Serializable {
     @JoinColumn(name = "ID_FUNCIONARIO", referencedColumnName = "ID_FUNCIONARIO")
     @ManyToOne
     private Gestao idFuncionario;
+    
+    private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
+    private static EntityManagerFactory factory;
 
     public Encomenda() {
     }
@@ -135,6 +142,42 @@ public class Encomenda implements Serializable {
     @Override
     public String toString() {
         return "DAL.Encomenda[ codEncomenda=" + codEncomenda + " ]";
+    }
+    
+    
+    public void criarEncomenda(Encomenda nova){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+        em.getTransaction().begin();
+        em.persist(nova);
+        em.getTransaction().commit();
+    }
+    
+    public Encomenda ultimaInserida(){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        Encomenda ultima = new Encomenda();
+        ultima.setCodEncomenda(0);
+        
+        Query q = em.createNamedQuery("Encomenda.findAll");
+        for (Object d : q.getResultList()) {
+            if ((((Encomenda) d).getCodEncomenda() > ultima.getCodEncomenda())) {
+                ultima = ((Encomenda) d);
+            }
+        }
+        
+        return ultima;
+    }
+    
+    
+    public void atualizar(Encomenda nova){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+        em.getTransaction().begin();
+        em.merge(nova);
+        em.getTransaction().commit();
     }
     
 }

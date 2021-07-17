@@ -13,6 +13,7 @@ import DAL.ProdEncomendaPK;
 import DAL.ProdutoInicial;
 import java.awt.Color;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -37,7 +38,17 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         janelaPrincipal=parent;
         gestor = recebido;
         listarProdutos();
+        listarFornecedores();
        
+    }
+    
+    private void listarFornecedores(){
+        Fornecedor aux = new Fornecedor();
+        List<Fornecedor> lista = aux.listarFornecedores();
+        this.jComboBox1.removeAllItems();
+        for(int i=0;i<lista.size();i++){
+            this.jComboBox1.addItem(lista.get(i).getNome());
+        }
     }
     
     
@@ -68,30 +79,14 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     
             return ((ProdutoInicial)obj);
              
-        }
-        
-        
-        
+        }         
         return null;
     }
     
-    public Fornecedor procurarFornecedor(){
-        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
-        EntityManager em = factory.createEntityManager();
-        
-        Fornecedor novo = new Fornecedor();
-        Query q = em.createNamedQuery("Fornecedor.findByCodFornecedor");
-        q.setParameter("codFornecedor",Integer.parseInt(this.jComboBox1.getSelectedItem().toString()));
-        
-            Object obj = null;
-        try{
-             obj = q.getSingleResult();
-        }catch(Exception ex){
-            
-        }
-        if(obj!=null)return ((Fornecedor)obj);
-        return null;
-    }
+
+    
+    
+    
     
 
 
@@ -223,22 +218,18 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(422, 443, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
@@ -247,13 +238,15 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton4))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jButton1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,30 +257,66 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addGap(55, 55, 55)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
                     .addComponent(jButton4))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3))
-                .addGap(5, 5, 5))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 660, 510));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 590, 510));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/oceano.jpeg"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 600));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
+            
+            int totalEncomenda = 0;
+            
+            
+            Fornecedor aux = new Fornecedor();
+            aux = aux.procurarFornecedor(this.jComboBox1.getSelectedItem().toString());
+            
+            Encomenda nova = new Encomenda();
+            nova.setPrecototal(totalEncomenda);
+            nova.setCodFornecedor(aux);
+            nova.setDataEncomenda(new Date());
+            nova.setIdFuncionario(gestor);
+            nova.criarEncomenda(nova);
+            
+            nova = nova.ultimaInserida();
+            
+            
+            
+        DefaultTableModel model;
+        model = (DefaultTableModel) jTable1.getModel();
+           
+        for(int i=0; i<model.getRowCount();i++){
+        ProdEncomenda linhaEncomenda = new ProdEncomenda();
+        ProdEncomendaPK pk = new ProdEncomendaPK();
+        pk.setCodEncomenda(nova.getCodEncomenda());
+        pk.setCodProduto(procurarProduto(model.getValueAt(i, 1).toString()).getCodProduto());
+                
+          linhaEncomenda.setEncomenda(nova);
+          linhaEncomenda.setPrecoiva(Double.parseDouble(model.getValueAt(i, 4).toString()));
+          linhaEncomenda.setProdutoInicial(procurarProduto(model.getValueAt(i, 1).toString()));
+          linhaEncomenda.setProdEncomendaPK(pk);         
+          linhaEncomenda.setQuantidade(Integer.parseInt(model.getValueAt(i, 3).toString()));
+          linhaEncomenda.criarProdEncomenda(linhaEncomenda);
+          totalEncomenda = (int) (totalEncomenda + linhaEncomenda.getPrecoiva());
+        }          
+        nova.setPrecototal(totalEncomenda);
+        nova.atualizar(nova);    
        
     }//GEN-LAST:event_jButton3ActionPerformed
 

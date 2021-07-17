@@ -6,10 +6,14 @@
 package DAL;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +22,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 
 /**
@@ -57,6 +63,9 @@ public class Fornecedor implements Serializable {
     @JoinColumn(name = "CODPOSTAL", referencedColumnName = "CODPOSTAL")
     @ManyToOne
     private Codpostais codpostal;
+    
+    private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
+    private static EntityManagerFactory factory;
 
     public Fornecedor() {
     }
@@ -152,6 +161,39 @@ public class Fornecedor implements Serializable {
     @Override
     public String toString() {
         return "DAL.Fornecedor[ codFornecedor=" + codFornecedor + " ]";
+    }
+    
+        public Fornecedor procurarFornecedor(String nome){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+        Fornecedor novo = new Fornecedor();
+        Query q = em.createNamedQuery("Fornecedor.findByNome");
+        q.setParameter("nome",nome);
+        
+            Object obj = null;
+        try{
+             obj = q.getSingleResult();
+        }catch(Exception ex){
+            
+        }
+       return ((Fornecedor)obj);       
+    }
+        
+        public List<Fornecedor> listarFornecedores(){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+        Query q = em.createNamedQuery("Fornecedor.findAll");
+        List<Fornecedor> fornecedores = new ArrayList();
+        
+        for (Object d : q.getResultList()) {
+            if ((((Fornecedor) d).getCodFornecedor() != null)) {
+                 fornecedores.add(((Fornecedor) d));
+            }
+        }
+        
+        return fornecedores;
     }
     
 }
