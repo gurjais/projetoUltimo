@@ -9,6 +9,7 @@ import DAL.Armazem;
 import DAL.Codpostais;
 import DAL.Gestao;
 import DAL.ProdutoFinal;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -31,12 +32,19 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         initComponents();
         janelaPrincipal = parent;
         this.gestor = gestor;
-        atualizarConteudo(false);
+        atualizarConteudo();
        
     }
 
     
-    public void atualizarConteudo(boolean estado){
+    public void atualizarConteudo(){
+        ProdutoFinal aux = new ProdutoFinal();
+        
+        List<ProdutoFinal> lista = aux.listarProdutos();
+        this.jComboBox1.removeAllItems();
+        for(int i =0;i<lista.size();i++){
+            this.jComboBox1.addItem(lista.get(i).getNomeProduto());
+        }
        
     }
     /**
@@ -50,25 +58,13 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane3 = new javax.swing.JTextPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane5 = new javax.swing.JTextPane();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -80,26 +76,9 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         jLabel1.setText("BEM VINDO, nome");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 400, -1));
 
-        jTextPane1.setText("ex :12345");
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 75, 154, -1));
-
-        jScrollPane2.setViewportView(jTextPane2);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 75, 183, -1));
-
         jScrollPane3.setViewportView(jTextPane3);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 183, -1));
-
-        jScrollPane4.setViewportView(jTextPane4);
-
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 222, 154, -1));
-
-        jScrollPane5.setViewportView(jTextPane5);
-
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 154, -1));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 183, -1));
 
         jButton3.setText("Alterar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -116,31 +95,22 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
             }
         });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 276, 95, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 224, 183, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("ID do produto");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 52, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Nome do produto");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 52, -1, -1));
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Quantidade");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Descrição");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Armazem");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 199, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Preço");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(227, 199, -1, -1));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 100, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 420, 310));
 
@@ -152,55 +122,44 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
         EntityManager em = factory.createEntityManager();
         ProdutoFinal novo = new ProdutoFinal();
-        Armazem armazem = new Armazem();
-        Codpostais postal = new Codpostais();
-        postal.setCodpostal("1111-111");
-        armazem.setIdArmazem(1);
-        armazem.setCodpostal(postal);
-
-        if(armazem.getCodpostal()!=null){
-            novo.setCodProduto(Integer.parseInt(this.jTextPane1.getText()));
-            novo.setNomeProduto(this.jTextPane2.getText());
-            novo.setDesProduto(this.jTextPane5.getText());
-            novo.setQuantidade(Integer.parseInt(this.jTextPane3.getText()));
-            novo.setIdArmazem(armazem);
-            novo.setPreco(new Double(this.jTextField1.getText()));;
-
-            em.getTransaction().begin();
-            em.persist(novo);
-            em.getTransaction().commit();
-        }else{
-            System.out.println("algo");
-        }
+         novo = novo.procurarProduto(this.jComboBox1.getSelectedItem().toString());
+         novo.setQuantidade(Integer.parseInt(this.jTextPane3.getText()));
+         
+         em.getTransaction().begin();
+         em.merge(novo);
+         em.getTransaction().commit();
+         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.janelaPrincipal.trocaPainel(new menuGestorProducao(this.janelaPrincipal,gestor));
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+       if(this.jComboBox1.getSelectedItem()!=null){
+           ProdutoFinal novo = new ProdutoFinal();
+           novo = novo.procurarProduto(this.jComboBox1.getSelectedItem().toString());
+         
+         this.jTextPane3.setText(novo.getQuantidade().toString());
+       }
+        
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
-    private javax.swing.JTextPane jTextPane4;
-    private javax.swing.JTextPane jTextPane5;
     // End of variables declaration//GEN-END:variables
 }

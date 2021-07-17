@@ -6,11 +6,15 @@
 package DAL;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +23,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 
 /**
@@ -56,6 +62,9 @@ public class ProdutoFinal implements Serializable {
     @JoinColumn(name = "ID_ARMAZEM", referencedColumnName = "ID_ARMAZEM")
     @ManyToOne
     private Armazem idArmazem;
+    
+    private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
+    private static EntityManagerFactory factory;
 
     public ProdutoFinal() {
     }
@@ -143,6 +152,38 @@ public class ProdutoFinal implements Serializable {
     @Override
     public String toString() {
         return "DAL.ProdutoFinal[ codProduto=" + codProduto + " ]";
+    }
+    
+     public List<ProdutoFinal> listarProdutos(){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        List <ProdutoFinal> lista = new ArrayList();
+        
+        Query q = em.createNamedQuery("ProdutoFinal.findAll");
+        for (Object d : q.getResultList()) {
+            if ((((ProdutoFinal) d).getCodProduto() != null)) {
+                lista.add(((ProdutoFinal) d)); 
+            }
+        }
+        return lista;
+    }
+    
+    
+    public ProdutoFinal procurarProduto(String nomeProduto){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+        
+        Query q = em.createNamedQuery("ProdutoFinal.findByNomeProduto");
+        q.setParameter("nomeProduto", nomeProduto);
+        Object obj = q.getSingleResult();
+        
+        if(obj != null){
+    
+            return ((ProdutoFinal)obj);
+             
+        }         
+        return null;
     }
     
 }
