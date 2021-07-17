@@ -6,17 +6,23 @@
 package DAL;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,6 +56,9 @@ public class Maquina implements Serializable {
     private Date proximarevisao;
     @OneToMany(mappedBy = "idMaquina")
     private Collection<Revisao> revisaoCollection;
+    
+    private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
+    private static EntityManagerFactory factory;
 
     public Maquina() {
     }
@@ -123,4 +132,36 @@ public class Maquina implements Serializable {
         return "DAL.Maquina[ idMaquina=" + idMaquina + " ]";
     }
     
-}
+     public List<Maquina> listarMaquinas(){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        List <Maquina> lista = new ArrayList();
+        
+        Query q = em.createNamedQuery("Maquina.findAll");
+        for (Object d : q.getResultList()) {
+            if ((((Maquina) d).getIdMaquina() != null)) {
+                lista.add(((Maquina) d)); 
+            }
+        }
+        return lista;
+    }
+     
+     public Maquina encontrarMaquina(int id){
+         factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        
+         Query q = em.createNamedQuery("Maquina.findByIdMaquina");
+        q.setParameter("idMaquina", id);
+        Object obj = q.getSingleResult();
+        
+        if(obj != null){
+    
+            return ((Maquina)obj);
+             
+        }         
+        return null;
+    }
+     
+     
+     }
+

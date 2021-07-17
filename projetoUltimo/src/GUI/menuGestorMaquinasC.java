@@ -30,8 +30,8 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     public menuGestorMaquinasC(login parent,Gestao gestor, Maquina maquina) {
         initComponents();
         
-        this.jLabel1.setText(gestor.getIdFuncionario().toString());
-        this.jTextPane2.setText(new Date().toString());
+        this.jLabel4.setText("Funcionario: "+gestor.getIdFuncionario().toString()+", "+gestor.getNome());
+        this.jLabel6.setText("Data: "+new Date().toString());
         janelaPrincipal=parent;
         this.gestor=gestor;
         this.maquina=maquina;
@@ -57,10 +57,6 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -70,7 +66,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
 
         jScrollPane4.setViewportView(jTextPane4);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 190, -1));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 190, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Avaliação:");
@@ -101,19 +97,11 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Funcionario:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 310, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Data:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 41, -1));
-
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 180, -1));
-
-        jScrollPane2.setViewportView(jTextPane2);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 220, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 320, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 460, 280));
 
@@ -161,11 +149,7 @@ private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane4;
     // End of variables declaration//GEN-END:variables
 }
