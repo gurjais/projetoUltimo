@@ -30,18 +30,17 @@ public class menuGestorArmazem extends javax.swing.JPanel {
         this.gestor=gestor;
      
         
-        this.jTextPane1.setText(procura.getIdFuncionario().getIdFuncionario().toString());
-        this.jTextPane2.setText(procura.getCodCliente().getCodCliente().toString());
-        this.jTextPane5.setText(procura.getData1().toString());
-        this.jTextPane3.setText(procura.getCodCliente().getRua() +","+procura.getCodCliente().getPorta().toString()+","+ procura.getCodCliente().getCodpostal().getCodpostal());
-        this.jTextPane4.setText(procura.getPrecototal().toString());
-        this.jTextPane6.setText(procura.getEstadopagamento());
-        this.jTextField1.setText(procura.getEstadoencomenda());
+
+        this.jLabel2.setText("Encomenda: "+procura.getCodVenda().toString());
+        this.jLabel3.setText("Data: "+procura.getData1().toString());
+        this.jLabel6.setText("Morada de entrega: "+procura.getCodCliente().getRua() +","+procura.getCodCliente().getPorta().toString()+","+ procura.getCodCliente().getCodpostal().getCodpostal());
+        this.jLabel4.setText("Preço: "+procura.getPrecototal().toString());
+        this.jLabel7.setText("Estado da encomenda: "+procura.getEstadoencomenda());
+        this.jLabel8.setText("Estado de pagamento: "+procura.getEstadopagamento());
     }
     
     public void atualizarPagina(){
-        this.jTextPane4.setText(procura.getPrecototal().toString());
-        this.jTextField1.setText(procura.getEstadoencomenda());  
+        this.jLabel7.setText("Estado da encomenda: "+procura.getEstadoencomenda());  
     }
 
     /**
@@ -54,30 +53,16 @@ public class menuGestorArmazem extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane5 = new javax.swing.JTextPane();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTextPane6 = new javax.swing.JTextPane();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,42 +71,25 @@ public class menuGestorArmazem extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane3.setViewportView(jTextPane3);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 190, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 190, -1));
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Codigo da venda");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
-
-        jScrollPane4.setViewportView(jTextPane4);
-
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 210, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Data");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Valor Total");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 89, -1));
-
-        jScrollPane5.setViewportView(jTextPane5);
-
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 210, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("id do cliente");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 89, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Destino");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel1.setText("BEM VINDO, nome");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 520, 22));
+        jLabel1.setText("Detalhes de envio");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 410, 22));
 
         jButton3.setText("Aprovar envio");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -129,28 +97,15 @@ public class menuGestorArmazem extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 381, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Estado encomenda");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, -1, -1));
-
-        jTextPane1.setText("ex :12345");
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 210, -1));
-
-        jButton4.setText("Ver produtos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 154, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Estado pagamento");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
         jButton5.setText("voltar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -158,19 +113,10 @@ public class menuGestorArmazem extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 381, 95, -1));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 95, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 410, 10));
 
-        jTextPane2.setText("ex :12345");
-        jScrollPane2.setViewportView(jTextPane2);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 190, -1));
-
-        jTextPane6.setText("Estado pagamento");
-        jScrollPane6.setViewportView(jTextPane6);
-
-        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 190, -1));
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 540, 415));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 440, 415));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/oceano.jpeg"))); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 560));
@@ -188,10 +134,6 @@ public class menuGestorArmazem extends javax.swing.JPanel {
         atualizarPagina();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        this.janelaPrincipal.trocaPainel(new produtoVenda(this.janelaPrincipal,procura,gestor));
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.janelaPrincipal.trocaPainel(new menuGestorVenda(this.janelaPrincipal,gestor));
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -199,30 +141,16 @@ public class menuGestorArmazem extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
-    private javax.swing.JTextPane jTextPane4;
-    private javax.swing.JTextPane jTextPane5;
-    private javax.swing.JTextPane jTextPane6;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

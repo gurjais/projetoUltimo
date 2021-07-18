@@ -28,7 +28,7 @@ public class login extends javax.swing.JFrame {
     
     public login() {
         initComponents();
-         setSize(600,600);
+        setSize(600,600);
         setResizable(false);
        
         this.setLocationRelativeTo(null);
@@ -141,12 +141,12 @@ public class login extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel2.setText("BEM-VINDO");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 420, 210));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 420, 210));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/oceano.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 380));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

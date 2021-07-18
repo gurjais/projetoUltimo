@@ -6,12 +6,16 @@
 package DAL;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +24,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -62,7 +68,8 @@ public class Venda implements Serializable {
     private Gestao idFuncionario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "venda")
     private Collection<ProdVenda> prodVendaCollection;
-
+private static final String Persistence_UNIT_NAME = "projetoUltimoPU";
+    private static EntityManagerFactory factory;
     public Venda() {
     }
 
@@ -157,6 +164,20 @@ public class Venda implements Serializable {
     @Override
     public String toString() {
         return "DAL.Venda[ codVenda=" + codVenda + " ]";
+    }
+    
+      public List<Venda> listarVendas(){
+        factory = Persistence.createEntityManagerFactory(Persistence_UNIT_NAME);
+        EntityManager em = factory.createEntityManager();
+        List <Venda> lista = new ArrayList();
+        
+        Query q = em.createNamedQuery("Venda.findAll");
+        for (Object d : q.getResultList()) {
+            if ((((Venda) d).getCodVenda() != null)) {
+                lista.add(((Venda) d)); 
+            }
+        }
+        return lista;
     }
     
 }
